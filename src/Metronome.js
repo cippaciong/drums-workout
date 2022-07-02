@@ -37,13 +37,18 @@ class BaseMetronome {
     this.tickVolume.gain.linearRampToValueAtTime(0, time + .001 + .01);
   }
 
-  start() {
+  init() {
     this.playing = true;
     this.initAudio();
   }
 
-  stop() {
-    this.tick.stop(0);
+  stop(when = 0) {
+    this.tick.addEventListener('ended', (event) => {
+      console.log("Caught 'ended' event");
+      this.playing = false
+    });
+    console.log("Stopping metronome at " + when);
+    this.tick.stop(when);
   }
 }
 
@@ -51,14 +56,14 @@ class BaseMetronome {
  * Scheduling is done by prescheduling all the audio events, and
  * letting the WebAudio scheduler actually do the scheduling.
  */
-class ScheduledMetronome extends BaseMetronome {
+export default class ScheduledMetronome extends BaseMetronome {
   constructor(tempo, ticks = 1000) {
     super(tempo);
     this.scheduledTicks = ticks;
   }
 
-  start(callbackFn) {
-    super.start();
+  start() {
+    super.init();
     const timeoutDuration = (60 / this.tempo);
 
     let now = this.audioCtx.currentTime;
@@ -66,16 +71,14 @@ class ScheduledMetronome extends BaseMetronome {
     // Schedule all the clicks ahead.
     for (let i = 0; i < this.scheduledTicks; i++) {
       this.clickAtTime(now);
-      const x = now;
-      // setTimeout(() => callbackFn(x), now * 1000);
       now += timeoutDuration;
     }
+    this.stop(now)
   }
 
-  stop() {
-    console.log("Calling stop in base class");
-    super.stop();
+  stop(when = 0) {
+    super.stop(when);
   }
 }
 
-export {ScheduledMetronome};
+// export default class {ScheduledMetronome};
