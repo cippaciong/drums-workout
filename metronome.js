@@ -43,6 +43,7 @@ class BaseMetronome {
   }
 
   stop() {
+    this.playing = false;
     this.tick.stop(0);
   }
 }
@@ -57,7 +58,7 @@ class ScheduledMetronome extends BaseMetronome {
     this.scheduledTicks = ticks;
   }
 
-  start(callbackFn) {
+  start() {
     super.start();
     const timeoutDuration = (60 / this.tempo);
 
@@ -67,13 +68,11 @@ class ScheduledMetronome extends BaseMetronome {
     for (let i = 0; i < this.scheduledTicks; i++) {
       this.clickAtTime(now);
       const x = now;
-      // setTimeout(() => callbackFn(x), now * 1000);
       now += timeoutDuration;
     }
   }
 
   stop() {
-    console.log("Calling stop in base class");
     super.stop();
   }
 }

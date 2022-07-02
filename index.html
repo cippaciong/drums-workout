@@ -8,17 +8,24 @@
 
     <link href="style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700&display=swap" rel="stylesheet">
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="./script.js" type="module"></script>
   </head>  
   <body>
     <h1>Drums Workout</h1>
 
     <section>
-      <table class="demo">
+      <table class="workout">
         <tr>
-          <td><label> <b>Duration (minutes)</b><input id="durationInput" value="20" type="number"></label></td>
-          <td><label> <b>Tempo (bpm)</b><input id="tempoInput" value="120" type="number"></label></td>
+          <td><label> <b>Work Duration (seconds)</b><input id="workDurationInput" value="30" type="number"></label></td>
+          <td><label> <b>Rest Duration (seconds)</b><input id="restDurationInput" value="10" type="number"></label></td>
+        </tr>
+        <tr>
+          <td><label> <b>Rounds per series</b><input id="roundsPerSeriesInput" value="8" type="number"></label></td>
+          <td><label> <b>BPM increase</b><input id="bpmIncreaseInput" value="5" type="number"></label></td>
+        </tr>
+        <tr>
+          <td><label> <b>Start BPM</b><input id="startBpmInput" value="80" type="number"></label></td>
+          <td><label> <b>Stop BPM</b><input id="stopBpmInput" value="100" type="number"></label></td>
         </tr>
         <tr>
           <td><button id="btnStart" class="accent">start</button></td>
