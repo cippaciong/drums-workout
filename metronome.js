@@ -42,9 +42,11 @@ class BaseMetronome {
     this.initAudio();
   }
 
-  stop() {
-    this.playing = false;
-    this.tick.stop(0);
+  stop(when = 0) {
+    // this.playing = false;
+    this.tick.addEventListener('ended', (event) => {this.playing = false});
+    console.log("Stopping metronome at " + when);
+    this.tick.stop(when);
   }
 }
 
@@ -67,13 +69,13 @@ class ScheduledMetronome extends BaseMetronome {
     // Schedule all the clicks ahead.
     for (let i = 0; i < this.scheduledTicks; i++) {
       this.clickAtTime(now);
-      const x = now;
       now += timeoutDuration;
     }
+    this.stop(now)
   }
 
-  stop() {
-    super.stop();
+  stop(when = 0) {
+    super.stop(when);
   }
 }
 

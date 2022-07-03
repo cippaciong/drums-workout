@@ -25,10 +25,11 @@ async function start() {
       const CLICKS = (WORK_DURATION + REST_DURATION) * ROUNDS_PER_SERIES * tempo
 
       metronome = new ScheduledMetronome(tempo, CLICKS);
+
       metronome.start();
 
       while (metronome.playing) {
-        await sleep(1000)
+        await sleep(10)
       }
 
       tempo += BPM_INCREASE
