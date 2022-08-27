@@ -1,3 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* PREVIOUS CSS
+
 * {box-sizing:border-box}
 [disabled] {pointer-events:none;opacity:0.3}
 body {
@@ -58,3 +64,4 @@ input {
 .accent {
   background: aquamarine;
 }
+*/
