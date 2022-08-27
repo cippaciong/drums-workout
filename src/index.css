@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* PREVIOUS CSS
-
 * {box-sizing:border-box}
 [disabled] {pointer-events:none;opacity:0.3}
 body {
@@ -16,25 +14,19 @@ body {
 }
 section {
   margin: 48px 0;
+  background: #F9F9F9;
+  padding: 1em;
 }
+
 h1 {
   margin-bottom: 0;
 }
-table {
-  background: #F9F9F9;
-  margin: 16px 0;
-  padding: 1em;
-  width: 100%;
-}
-td.emoji {
-  font-size: 30px;
-}
-td {
-  vertical-align: middle;
+
+.settings {
   font-size: 12px;
   padding: 8px;
-  max-width: 70%;
 }
+
 button {
   display: block;
   border: 1px solid #444;
@@ -64,4 +56,3 @@ input {
 .accent {
   background: aquamarine;
 }
-*/

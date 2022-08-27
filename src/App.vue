@@ -81,40 +81,63 @@ function parseSettings() {
     <h1>Drums Workout</h1>
 
     <section>
-      <table class="workout">
-        <tr>
-          <td><label><b>Work Duration (seconds)</b></label></td>
-          <td><input id="workDurationInput" value="1" type="number"></td>
-          <td><label><b>Rest Duration (seconds)</b></label></td>
-          <td><label><input id="restDurationInput" value="1" type="number"></label></td>
-        </tr>
-        <tr>
-          <td><label> <b>Rounds per series</b></label></td>
-          <td><input id="roundsPerSeriesInput" value="1" type="number"></td>
-          <td><label> <b>BPM increase</b></label></td>
-          <td><input id="bpmIncreaseInput" value="20" type="number"></td>
-        </tr>
-        <tr>
-          <td><label> <b>Start BPM</b></label></td>
-          <td><input id="startBpmInput" value="80" type="number"></td>
-          <td><label> <b>Stop BPM</b></label></td>
-          <td><input id="stopBpmInput" value="200" type="number"></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td><button @click="start" id="btnStart" class="accent">start</button></td>
-          <td><button @click="stop" id="btnStop" disabled="">stop</button></td>
-          <td></td>
-        </tr>
-      </table>
+      <div class="grid grid-cols-4 gap-4">
+        <div class="settings">
+          <label><b>Work Duration (seconds)</b></label>
+        </div>
+        <div class="settings">
+          <input id="workDurationInput" value="1" type="number">
+        </div>
+        <div class="settings">
+          <label><b>Rest Duration (seconds)</b></label>
+        </div>
+        <div class="settings">
+          <input id="restDurationInput" value="1" type="number">
+        </div>
+
+        <div class="settings">
+          <label> <b>Rounds per series</b></label>
+        </div>
+        <div class="settings">
+          <input id="roundsPerSeriesInput" value="1" type="number">
+        </div>
+        <div class="settings">
+          <label> <b>BPM increase</b></label>
+        </div>
+        <div class="settings">
+          <input id="bpmIncreaseInput" value="20" type="number">
+        </div>
+
+        <div class="settings">
+          <label> <b>Start BPM</b></label>
+        </div>
+        <div class="settings">
+          <input id="startBpmInput" value="80" type="number">
+        </div>
+        <div class="settings">
+          <label> <b>Stop BPM</b></label>
+        </div>
+        <div class="settings">
+          <input id="stopBpmInput" value="200" type="number">
+        </div>
+
+        <div class="settings col-span-3">
+          <button @click="start" id="btnStart" class="accent">start</button>
+        </div>
+        <div class="settings">
+          <button @click="stop" id="btnStop" disabled="">stop</button>
+        </div>
+      </div>
     </section>
 
     <section>
-      <table class="workout">
-        <tr>
-          <td><b>Speed</b><p id="currentSpeed">-</p></td>
-          <td><b>Status</b><p id="currentStatus">-</p></td>
-        </tr>
-        </table>
+      <div class="grid grid-cols-2 gap-4">
+        <div class="settings">
+          <b>Speed</b><p id="currentSpeed">-</p>
+        </div>
+        <div class="settings">
+          <b>Status</b><p id="currentStatus">-</p>
+        </div>
+      </div>
     </section>
 </template>
