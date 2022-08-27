@@ -4,14 +4,15 @@
 
 * {box-sizing:border-box}
 [disabled] {pointer-events:none;opacity:0.3}
+
 body {
   font-family: 'Roboto Mono', monospace; 
-  font-size: 15px;
   padding: 2em;
   max-width: 800px;
   line-height: 1.5;
   color: #444;
 }
+
 section {
   margin: 48px 0;
   background: #F9F9F9;

@@ -78,10 +78,10 @@ function parseSettings() {
 </script>
 
 <template>
-    <h1>Drums Workout</h1>
+    <h1 class="font-bold text-4xl">Drums Workout</h1>
 
     <section>
-      <div class="grid grid-cols-4 gap-4">
+      <div class="grid grid-cols-4 gap-2">
         <div class="settings">
           <label><b>Work Duration (seconds)</b></label>
         </div>
