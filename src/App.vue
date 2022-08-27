@@ -81,13 +81,14 @@ function parseSettings() {
     <h1 class="font-bold text-4xl">Drums Workout</h1>
 
     <section>
-      <div class="grid grid-cols-4 gap-2">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
         <div class="settings">
           <label><b>Work Duration (seconds)</b></label>
         </div>
         <div class="settings">
           <input id="workDurationInput" value="1" type="number">
         </div>
+
         <div class="settings">
           <label><b>Rest Duration (seconds)</b></label>
         </div>
@@ -101,6 +102,7 @@ function parseSettings() {
         <div class="settings">
           <input id="roundsPerSeriesInput" value="1" type="number">
         </div>
+
         <div class="settings">
           <label> <b>BPM increase</b></label>
         </div>
@@ -114,6 +116,7 @@ function parseSettings() {
         <div class="settings">
           <input id="startBpmInput" value="80" type="number">
         </div>
+
         <div class="settings">
           <label> <b>Stop BPM</b></label>
         </div>
@@ -121,9 +124,10 @@ function parseSettings() {
           <input id="stopBpmInput" value="200" type="number">
         </div>
 
-        <div class="settings col-span-3">
+        <div class="settings md:col-span-3">
           <button @click="start" id="btnStart" class="accent">start</button>
         </div>
+
         <div class="settings">
           <button @click="stop" id="btnStop" disabled="">stop</button>
         </div>
