@@ -9,10 +9,11 @@ const roundsPerSeries = ref(1);
 const increaseBPM = ref(20);
 const startBPM = ref(80);
 const stopBPM = ref(200);
-const settings = parseSettings();
-const session = reactive(new Session(startBPM.value, stopBPM.value, increaseBPM.value, settings));
+const session = reactive(new Session());
 
 async function start() {
+  const settings = parseSettings();
+  session.configure(startBPM.value, stopBPM.value, increaseBPM.value, settings);
   session.start();
   document.getElementById('btnStop').removeAttribute("disabled")
 }
@@ -35,6 +36,8 @@ function parseSettings() {
 
   settings["start_bpm"] = startBPM.value;
   settings["stop_bpm"] = stopBPM.value;
+
+  console.log(`Settings: ${JSON.stringify(settings)}`)
 
   return settings
 }
@@ -101,12 +104,12 @@ function parseSettings() {
     <div class="grid grid-cols-2 gap-4">
       <div class="settings">
         <b>Speed</b>
-        <p v-if="session.currentSeries">{{ session.currentSeries.tempo }}</p>
+        <p v-if="session.currentSeries">{{ session.currentSeries.tempo}}</p>
         <p v-else="session.currentSeries">-</p>
       </div>
       <div class="settings">
         <b>Status</b>
-        <p>{{ session.seriesNum || "-" }}</p>
+        <p>{{ session.seriesNum || "-"}}</p>
       </div>
     </div>
   </section>

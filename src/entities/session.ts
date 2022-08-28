@@ -13,20 +13,23 @@ export default class Session {
   currentSeries: Series;
   seriesNum: number;
 
-  constructor(startBPM: number, stopBPM: number, increaseBPM: number, settings: Object) {
+  constructor() {
     this.id = uuidv4()
+  }
+
+  configure(startBPM: number, stopBPM: number, increaseBPM: number, settings: Object) {
     this.startBPM = startBPM;
     this.stopBPM = stopBPM;
     this.increaseBPM = increaseBPM;
     this.settings = settings;
-    this.#initializeSeries();
+    this.initializeSeries();
   }
 
   numSeries() {
     return (this.stopBPM - this.startBPM) / this.increaseBPM + 1;
   }
 
-  #initializeSeries() {
+  initializeSeries() {
     console.log(`Starting series creation`)
     this.series = [];
     for (let i = 0; i < this.numSeries(); i++) {
@@ -45,7 +48,7 @@ export default class Session {
 
     // Run all series one after the other
     for (const s of this.series) {
-      this.seriesNum++ 
+      this.seriesNum++
       this.currentSeries = s;
       this.currentSeries.start();
 
