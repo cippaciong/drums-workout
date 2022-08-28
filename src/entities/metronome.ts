@@ -3,6 +3,13 @@
  * More like a "click on command" class. 
  */
 class BaseMetronome {
+  tempo: number;
+  playing: boolean;
+  audioCtx: AudioContext;
+  tick: OscillatorNode;
+  tickVolume: GainNode;
+  soundHz: number;
+
   constructor(tempo = 60) {
     this.tempo = tempo;
     this.playing = false;
@@ -14,7 +21,7 @@ class BaseMetronome {
   }
 
   initAudio() {
-    this.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    this.audioCtx = new window.AudioContext();
     this.tick = this.audioCtx.createOscillator();
     this.tickVolume = this.audioCtx.createGain();
 
@@ -27,7 +34,7 @@ class BaseMetronome {
     this.tick.start(0);  // No offset, start immediately.
   }
 
-  clickAtTime(time) {
+  clickAtTime(time: number) {
     // Silence the click.
     this.tickVolume.gain.cancelScheduledValues(time);
     this.tickVolume.gain.setValueAtTime(0, time);
@@ -57,7 +64,9 @@ class BaseMetronome {
  * letting the WebAudio scheduler actually do the scheduling.
  */
 export default class ScheduledMetronome extends BaseMetronome {
-  constructor(tempo, ticks = 1000) {
+  scheduledTicks: number;
+
+  constructor(tempo: number, ticks = 1000) {
     super(tempo);
     this.scheduledTicks = ticks;
   }
