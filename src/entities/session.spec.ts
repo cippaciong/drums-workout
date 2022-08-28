@@ -5,7 +5,7 @@ describe('session', () => {
     const startBPM = 20;
     const stopBPM = 100;
     const increaseBPM = 20;
-    const session = new Session(startBPM, stopBPM, increaseBPM);
+    const session = new Session(startBPM, stopBPM, increaseBPM, {});
 
   it("should initialize successfully", () => {
     expect(session.startBPM).toBe(startBPM);

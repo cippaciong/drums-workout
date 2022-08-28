@@ -89,5 +89,3 @@ export default class ScheduledMetronome extends BaseMetronome {
     super.stop(when);
   }
 }
-
-// export default class {ScheduledMetronome};
