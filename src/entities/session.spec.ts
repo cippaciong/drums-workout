@@ -14,8 +14,15 @@ describe('session', () => {
     expect(session.id).toBeTypeOf("string");
   });
 
-  it("should return the correct number of series for a session", () => {
-    const numSeries = session.NumSeries();
+  it("should compute the correct number of series for a session", () => {
+    const numSeries = session.numSeries();
     expect(numSeries).toBe(5);
+  });
+
+  it("should create the series", () => {
+    const series = session.series
+    expect(series.length).toBe(5);
+    expect(series[0].tempo).toBe(startBPM);
+    expect(series[series.length -1].tempo).toBe(stopBPM);
   });
 })
