@@ -1,11 +1,8 @@
 <script setup>
-import ScheduledMetronome from './Metronome.js';
+import ScheduledMetronome from './entities/metronome';
 
 let metronome;
 let stopped;
-
-/* document.getElementById('btnStart').onclick = () => start(); */
-/* document.getElementById('btnStop').onclick = () => stop(); */
 
 async function start() {
   return new Promise(async (resolve, reject) => {

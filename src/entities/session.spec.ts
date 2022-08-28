@@ -1,13 +1,34 @@
-import { expect, test } from 'vitest'
+import {describe, it, expect, test} from 'vitest'
 import Session from './session'
 
-test('create a new session', () => {
-  let newSession = new Session(20, 100, 20);
-  expect(newSession.startBPM).toBe(20);
-  expect(newSession.stopBPM).toBe(100);
-});
+describe('Session tests', () => {
+  it("should initialize successfully", () => {
+    // Given
+    const startBPM = 20;
+    const stopBPM = 100;
+    const increaseBPM = 20;
 
-test('compute the number of series', () => {
-  let newSession = new Session(20, 100, 20);
-  expect(newSession.NumSeries()).toBe(5);
-});
+    // When
+    const session = new Session(startBPM, stopBPM, increaseBPM);
+
+    // Then
+    expect(session.startBPM).toBe(startBPM);
+    expect(session.stopBPM).toBe(stopBPM);
+    expect(session.increaseBPM).toBe(increaseBPM);
+  });
+
+
+  it("should return the correct number of series for a session", () => {
+    // Given
+    const startBPM = 20;
+    const stopBPM = 100;
+    const increaseBPM = 20;
+    const session = new Session(startBPM, stopBPM, increaseBPM);
+
+    // When
+    const numSeries = session.NumSeries();
+
+    // Then
+    expect(numSeries).toBe(5);
+  });
+})
